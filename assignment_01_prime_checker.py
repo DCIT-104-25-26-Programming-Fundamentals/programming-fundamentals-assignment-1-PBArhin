@@ -35,16 +35,15 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
-# Function to check if a number is prime
 def is_prime(n):
-    # Numbers less than 2 are not prime
+    
     if n < 2:
         return False
 
-    # Check if any number from 2 up to n - 1 divides n evenly
+   
     for i in range(2, n):
         if n % i == 0:
-            return False  # Found a factor, not prime
+            return False  
 
     return True
 
