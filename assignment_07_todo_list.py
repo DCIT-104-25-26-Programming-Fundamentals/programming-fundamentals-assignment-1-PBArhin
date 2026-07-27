@@ -79,3 +79,46 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def add_task(tasks):
+    task = input("Enter task: ").strip()
+    if task:
+        tasks.append(task)
+        print(f'Task added: "{task}"')
+
+def view_tasks(tasks):
+    if not tasks:
+        print("\nYour to-do list is currently empty!")
+    else:
+        print("\nYour Tasks:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
+
+def delete_task(tasks):
+    view_tasks(tasks)
+    if not tasks:
+        return
+    try:
+        idx = int(input("\nEnter task number to delete: ")) - 1
+        print(f'Task "{tasks.pop(idx)}" has been removed.')
+    except (ValueError, IndexError):
+        print("Error: Invalid task number.")
+
+def main():
+    tasks = []
+    actions = {"1": add_task, "2": view_tasks, "3": delete_task}
+    
+    while True:
+        print("\n============================\n      TO-DO LIST MENU       \n============================")
+        print("1. Add task\n2. View tasks\n3. Delete task\n4. Quit")
+        choice = input("Enter your choice (1-4): ").strip()
+        
+        if choice == "4":
+            print("\nGoodbye!")
+            break
+        elif choice in actions:
+            actions[choice](tasks)
+        else:
+            print("Invalid choice! Please enter a number between 1 and 4.")
+
+if __name__ == "__main__":
+    main()
